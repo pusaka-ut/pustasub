@@ -101,28 +101,33 @@ pustasub/
 │   ├── architecture.md        # Arsitektur & Spesifikasi Teknis
 │   ├── database.md            # Manajemen Data, State, & File Output
 │   ├── design.md              # Design System & UI/UX Guidelines
-│   └── state-tracker.md       # Status Fitur & Milestone Tracker
+│   ├── state-tracker.md       # Status Fitur & Milestone Tracker
+│   └── distribution-guide.md  # Panduan Distribusi & Standar Operasional Siaran
 ├── engine/                    # Core Python Engine
 │   ├── __init__.py
 │   ├── config.py              # Konfigurasi port, path model, presets, default audio
 │   ├── audio_capture.py       # WASAPI Loopback, Process Filter, Failover Watcher & Silence Feeder
 │   ├── asr_worker.py          # sherpa-onnx streaming engine & Language Gate switcher
 │   ├── text_processor.py      # Dual Pacing formatter, capitalization, punctuation & hotwords
+│   ├── translator.py          # Hybrid Neural & Offline Fallback Translator
 │   └── server.py              # FastAPI Web & WebSocket broadcasting + Panic Handler
 ├── models/                    # Folder model lokal sherpa-onnx (offline)
-│   ├── sherpa-onnx-streaming-zipformer-en-20M/
-│   └── sherpa-onnx-streaming-zipformer-id/ (Optional bilingual gate)
+│   └── sherpa-onnx-streaming-zipformer-en-20M-2023-02-17/
 ├── output/                    # Folder output broadcast
 │   ├── current_subtitle.txt   # File teks subtitle aktif untuk vMix
+│   ├── current_translation.txt # File teks terjemahan aktif untuk vMix
 │   └── sessions/              # Transkrip lengkap sesi (.srt dan .txt)
 ├── web/                       # Web Assets
 │   ├── admin/                 # Operator Control Panel CandyGlaze (HTML/CSS/JS)
 │   └── overlay/               # OBS / vMix Browser Source Overlay (HTML/CSS/JS)
 ├── build/                     # Script automasi pembuatan paket rilis
-│   ├── build_portable.py      # Script perakit paket zip portable
+│   ├── bundle_runtime.py      # Script perakit paket zip portable standalone
 │   └── setup_script.iss       # Script Inno Setup compiler installer .exe
-├── requirements.txt           # Dependensi Python development
-└── run.bat                    # Script 1-klik mode development
+├── main.py                    # Entry point PyInstaller Standalone Binary
+├── run.bat                    # Script 1-klik peluncur interaktif
+├── PUSTASUB.vbs               # Script 1-klik peluncur hening latar belakang
+├── update.bat                 # Script 1-klik pembaruan otomatis via GitHub
+└── requirements.txt           # Dependensi Python development
 ```
 
 ---
