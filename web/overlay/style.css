@@ -1,0 +1,407 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+  overflow: hidden;
+  font-family: "Outfit", "Plus Jakarta Sans", sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.overlay-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+  transition: padding 240ms ease;
+}
+
+.overlay-container.position-bottom {
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 72px;
+  padding-top: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.overlay-container.position-top {
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 54px;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.overlay-container.position-center {
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.overlay-container.position-left {
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding-left: 72px;
+  padding-bottom: 72px;
+  padding-top: 0;
+  padding-right: 0;
+}
+
+.overlay-container.position-right {
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding-right: 72px;
+  padding-bottom: 72px;
+  padding-top: 0;
+  padding-left: 0;
+}
+
+.speaker-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding: 6px 20px;
+  border-radius: 999px;
+  background: rgba(14, 33, 160, 0.9);
+  border: 1.5px solid rgba(255, 222, 0, 0.7);
+  box-shadow: 4px 6px 14px rgba(3, 70, 148, 0.45), inset 1.5px 1.5px 3px rgba(255, 253, 240, 0.3), inset -1.5px -1.5px 3px rgba(0, 0, 0, 0.25);
+  font-family: "Outfit", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFFDF0;
+  pointer-events: auto;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+
+.speaker-badge-pill.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.speaker-name {
+  color: #FFDE00;
+  font-weight: 800;
+}
+
+.speaker-sep {
+  color: rgba(255, 253, 240, 0.55);
+  font-size: 16px;
+}
+
+.speaker-title {
+  color: #F8F6FE;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.subtitle-card {
+  max-width: 86%;
+  min-height: 60px;
+  padding: 16px 36px;
+  border-radius: 32px;
+  background: rgba(10, 24, 60, 0.9);
+  border: 2px solid var(--vibrant-yellow, #FFDE00);
+  box-shadow:
+    12px 18px 36px -4px rgba(2, 12, 34, 0.55),
+    inset 3px 3px 6px rgba(255, 253, 240, 0.35),
+    inset -3px -3px 6px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  transform: translateY(16px) scale(0.98);
+  transition: opacity 220ms cubic-bezier(0.16, 1, 0.3, 1), transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  pointer-events: auto;
+}
+
+.subtitle-card.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.subtitle-card.panic-wipe {
+  opacity: 0 !important;
+  transform: scale(0.95) !important;
+  transition: none !important;
+}
+
+.subtitle-content {
+  font-family: "Outfit", "Plus Jakarta Sans", sans-serif;
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #FFFDF0;
+  text-align: center;
+  word-break: break-word;
+  white-space: pre-wrap;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-text-stroke: 2.2px #034694;
+  paint-order: stroke fill;
+  text-shadow: 0 2px 10px rgba(14, 33, 160, 0.65);
+}
+
+.subtitle-content .partial-pulse {
+  color: #FFDE00;
+  opacity: 0.92;
+  -webkit-text-stroke: 1.8px #0E21A0;
+}
+
+.subtitle-content .karaoke-word-glow {
+  color: #FFDE00 !important;
+  -webkit-text-stroke: 1.8px #0E21A0 !important;
+  text-shadow: 0 2px 8px rgba(14, 33, 160, 0.8), 0 4px 12px rgba(2, 12, 34, 0.6) !important;
+  animation: wordGlowPop 350ms cubic-bezier(0.17, 0.89, 0.32, 1.28);
+  display: inline-block;
+}
+
+@keyframes wordGlowPop {
+  0% {
+    transform: scale(1.12);
+    filter: brightness(1.25);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+.subtitle-glossary {
+  margin-top: 8px;
+  font-family: "Outfit", sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #FFDE00;
+  text-align: center;
+  background: rgba(3, 70, 148, 0.75);
+  border: 1px solid rgba(255, 222, 0, 0.55);
+  border-radius: 14px;
+  padding: 4px 18px;
+  letter-spacing: 0.3px;
+  box-shadow: 3px 5px 10px rgba(2, 12, 34, 0.4), inset 1px 1px 2px rgba(255, 253, 240, 0.4), inset -1px -1px 2px rgba(0, 0, 0, 0.3);
+  -webkit-text-stroke: 0px transparent;
+  text-shadow: 0 1px 4px rgba(2, 40, 87, 0.8);
+  display: inline-block;
+}
+
+.floating-translation-card {
+  position: absolute;
+  z-index: 50;
+  max-width: 520px;
+  padding: 12px 24px;
+  border-radius: 24px;
+  background: rgba(8, 20, 52, 0.94);
+  border: 1.8px solid #FFDE00;
+  box-shadow:
+    10px 16px 32px -4px rgba(2, 12, 34, 0.65),
+    inset 2.5px 2.5px 5px rgba(255, 253, 240, 0.35),
+    inset -2.5px -2.5px 5px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  pointer-events: auto;
+  opacity: 0;
+  transform: translateY(12px) scale(0.97);
+  transition: opacity 220ms cubic-bezier(0.16, 1, 0.3, 1), transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.floating-translation-card.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.floating-translation-card.panic-wipe {
+  opacity: 0 !important;
+  transition: none !important;
+}
+
+.floating-translation-card.pos-bottom-right {
+  bottom: 72px;
+  right: 72px;
+}
+
+.floating-translation-card.pos-top-right {
+  top: 54px;
+  right: 72px;
+}
+
+.floating-translation-card.pos-below-en {
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(12px) scale(0.97);
+}
+
+.floating-translation-card.pos-below-en.visible {
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
+.translation-badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 10px;
+  border-radius: 9999px;
+  background: rgba(255, 222, 0, 0.22);
+  color: #FFDE00;
+  font-family: "Outfit", sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  border: 1px solid rgba(255, 222, 0, 0.5);
+  box-shadow: 2px 3px 6px rgba(2, 12, 34, 0.35), inset 1px 1px 2px rgba(255, 253, 240, 0.4), inset -1px -1px 2px rgba(0, 0, 0, 0.2);
+  align-self: flex-start;
+}
+
+.translation-text {
+  font-family: "Outfit", "Plus Jakarta Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #FFFDF0;
+  -webkit-text-stroke: 1.2px #034694;
+  paint-order: stroke fill;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.subtitle-card.preset-academic-formal {
+  border-radius: 32px;
+  background: rgba(10, 24, 60, 0.92);
+  border: 2px solid #FFDE00;
+  box-shadow:
+    14px 20px 38px -4px rgba(3, 70, 148, 0.55),
+    inset 3px 3px 6px rgba(255, 253, 240, 0.35),
+    inset -3px -3px 6px rgba(0, 0, 0, 0.35);
+}
+
+.subtitle-card.preset-slide-friendly {
+  border-radius: 24px;
+  padding: 12px 28px;
+  background: rgba(14, 33, 160, 0.9);
+  border: 1.5px solid #FFDE00;
+  box-shadow:
+    10px 16px 30px -4px rgba(2, 12, 34, 0.5),
+    inset 2px 2px 4px rgba(255, 253, 240, 0.3),
+    inset -2px -2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.subtitle-card.preset-slide-friendly .subtitle-content {
+  font-size: 32px;
+  -webkit-text-stroke: 1.8px #034694;
+}
+
+.subtitle-card.preset-minimalist-glass {
+  border-radius: 28px;
+  background: rgba(10, 24, 60, 0.55);
+  border: 1.5px solid rgba(255, 253, 240, 0.35);
+  box-shadow:
+    8px 12px 24px -4px rgba(2, 12, 34, 0.4),
+    inset 2px 2px 4px rgba(255, 253, 240, 0.25),
+    inset -2px -2px 4px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.subtitle-card.preset-talkshow-honey {
+  border-radius: 36px;
+  background: rgba(255, 222, 0, 0.94);
+  border: 2.5px solid #034694;
+  box-shadow:
+    12px 18px 34px -4px rgba(3, 70, 148, 0.45),
+    inset 3px 3px 6px rgba(255, 253, 240, 0.65),
+    inset -3px -3px 6px rgba(2, 40, 87, 0.35);
+}
+
+.subtitle-card.preset-talkshow-honey .subtitle-content {
+  color: #022857;
+  -webkit-text-stroke: 0px transparent;
+  text-shadow: none;
+}
+
+.subtitle-card.preset-glow-neon-candy {
+  border-radius: 32px;
+  background: rgba(10, 24, 60, 0.9);
+  border: 2px solid #FFDE00;
+  box-shadow:
+    14px 20px 40px -4px rgba(3, 70, 148, 0.55),
+    inset 3px 3px 6px rgba(255, 253, 240, 0.4),
+    inset -3px -3px 6px rgba(0, 0, 0, 0.35);
+}
+
+.subtitle-card.preset-glow-neon-candy .subtitle-content {
+  -webkit-text-stroke: 2.2px #0E21A0;
+}
+
+.subtitle-card.preset-news-ticker-ribbon {
+  border-radius: 0;
+  width: 100vw;
+  max-width: 100vw;
+  background: rgba(3, 70, 148, 0.94);
+  border-top: 2.5px solid #FFDE00;
+  border-bottom: 2.5px solid #FFDE00;
+  border-left: none;
+  border-right: none;
+  padding: 12px 48px;
+  box-shadow: 0 6px 20px rgba(14, 33, 160, 0.5);
+}
+
+.subtitle-card.preset-news-ticker-ribbon .subtitle-content {
+  font-size: 34px;
+  -webkit-text-stroke: 1.5px #0E21A0;
+  -webkit-line-clamp: 1;
+}
+
+.subtitle-card.preset-speech-bubble-playful {
+  border-radius: 36px 36px 36px 8px;
+  background: rgba(14, 33, 160, 0.92);
+  border: 2.5px solid rgba(255, 222, 0, 0.8);
+  box-shadow:
+    14px 20px 36px -4px rgba(3, 70, 148, 0.5),
+    inset 3px 3px 6px rgba(255, 253, 240, 0.35),
+    inset -3px -3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.subtitle-card.preset-speech-bubble-playful .subtitle-content {
+  font-size: 38px;
+  -webkit-text-stroke: 2px #022857;
+}
+
+.subtitle-card.preset-top-banner-clean {
+  border-radius: 20px;
+  background: rgba(10, 24, 60, 0.9);
+  border: 1.8px solid rgba(255, 222, 0, 0.7);
+  box-shadow:
+    10px 14px 28px rgba(3, 70, 148, 0.45),
+    inset 2px 2px 4px rgba(255, 253, 240, 0.3),
+    inset -2px -2px 4px rgba(0, 0, 0, 0.3);
+  padding: 12px 32px;
+}
+
+.subtitle-card.preset-top-banner-clean .subtitle-content {
+  font-size: 32px;
+  -webkit-text-stroke: 1.8px #034694;
+  -webkit-line-clamp: 1;
+}

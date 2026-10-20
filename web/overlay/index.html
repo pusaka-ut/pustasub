@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PUSTASUB Broadcast Overlay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="overlay-root" class="overlay-container position-bottom">
+    <div id="speaker-badge-pill" class="speaker-badge-pill" style="display: none;">
+      <span id="speaker-badge-name" class="speaker-name"></span>
+      <span id="speaker-badge-separator" class="speaker-sep">&bull;</span>
+      <span id="speaker-badge-title" class="speaker-title"></span>
+    </div>
+    <div id="subtitle-card" class="subtitle-card preset-academic-formal" aria-live="polite">
+      <div id="subtitle-text" class="subtitle-content"></div>
+      <div id="subtitle-glossary" class="subtitle-glossary" style="display: none;"></div>
+    </div>
+    <div id="floating-translation-card" class="floating-translation-card pos-bottom-right" style="display: none;" aria-live="polite">
+      <div class="translation-badge-tag">TERJEMAHAN ID</div>
+      <div id="translation-text" class="translation-text"></div>
+    </div>
+  </div>
+  <script src="overlay.js"></script>
+</body>
+</html>
