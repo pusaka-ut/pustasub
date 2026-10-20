@@ -6,10 +6,10 @@ Dokumen ini adalah pelacak status resmi perkembangan proyek PUSTASUB. File ini W
 
 ## 1. Status Proyek Saat Ini
 
-**Fase Terkini:** FASE 7: ZERO-FAILURE BUTTON ACTION WIRING, CORS UNIVERSAL ORIGIN, & PAYLOAD ALIGNMENT (MILESTONE 0–16 SELESAI 100%)  
-**Kondisi Kode:** Seluruh sistem (Milestones 0–16) tuntas terverifikasi 100%. Masalah notifikasi gagal saat tombol diklik telah dibedah tuntas dan diperbaiki pada akar masalah: CORSMiddleware universal diaktifkan di FastAPI, model payload ganda (preset/preset_id, enabled/bilingual_mode, style keys) didukung di backend dan frontend, inisialisasi lazy audio_manager & asr_worker menjamin engine selalu siap start, deteksi protokol file:// di config.js mengarahkan API secara aman ke backend lokal, fallback clipboard terpasang pada tombol salin tautan OBS/vMix, dan launcher run.bat memiliki jeda startup 2 detik. Seluruh 70 unit tests lulus 100%.  
-**Kepatuhan Aturan:** Zero-Comments Rule 100% (tidak ada komentar di seluruh kode), Micro-Stepping ditaati, Zero Pure White `#FFFFFF` dipatuhi 100%, Zero-Neon dipatuhi 100%.  
-**Branch:** Default / Local  
+**Fase Terkini:** FASE 8: ZERO-DEPENDENCY STANDALONE PACKAGING, 1-CLICK OTA AUTO-UPDATER, & GITHUB RELEASE (MILESTONE 0–18 SELESAI 100%)  
+**Kondisi Kode:** Seluruh sistem (Milestones 0–18) tuntas 100%. Telah berhasil dikompilasi menjadi binary native mandiri `pustasub-engine.exe` / `PUSTASUB.exe` tanpa dependensi Python di laptop target. Paket distribusi portabel `PUSTASUB-v1.1.0-Portable.zip` (169 MB) telah dirakit lengkap dengan model AI offline, database, antarmuka admin/overlay, launcher hening `PUSTASUB.vbs`, launcher interaktif `run.bat`, dan script pembaruan instan `update.bat`. Repositori Git telah diinisialisasi secara profesional dan di-push ke https://github.com/pusaka-ut/pustasub.git pada branch main. Seluruh 76 unit tests lulus 100%.  
+**Kepatuhan Aturan:** Zero-Comments Rule 100%, Micro-Stepping ditaati, Zero Pure White `#FFFFFF` dipatuhi 100%, Git Guardian Rules ditaati 100%.  
+**Branch:** main (Tracking origin/main)  
 
 ---
 
@@ -160,6 +160,13 @@ Dokumen ini adalah pelacak status resmi perkembangan proyek PUSTASUB. File ini W
 - [x] Task 17.5: Automated Translation Pipeline Test Suite (`tests/test_milestone17_translation_pipeline.py` - 76/76 PASSED).
 - [x] Task 17.6: Re-bundle Distribusi Portabel (`dist/PUSTASUB/`) dan Sinkronisasi Dokumentasi State Tracker.
 
+### Milestone 18: Standalone Zero-Dependency Packaging, 1-Click OTA Auto-Updater, & GitHub Production Release (SELESAI 100%)
+- [x] Task 18.1: Native PyInstaller Standalone Compilation (`main.py` -> `pustasub-engine.exe`) (Kompilasi engine ke binary mandiri native Windows x64 dengan seluruh runtime dan C-extensions tanpa butuh Python di device tujuan).
+- [x] Task 18.2: 1-Click Resilient Auto-Updater (`update.bat`) (Dual-engine updater via Git sync & TLS 1.2 GitHub ZIP direct extract untuk update instan tanpa download ulang model besar).
+- [x] Task 18.3: Standalone Portable Bundle & ZIP Archive (`build/bundle_runtime.py` -> `dist/PUSTASUB-v1.1.0-Portable.zip`, 169.7 MB).
+- [x] Task 18.4: Professional Git Initialization, Conventional Commit, & Push ke GitHub (`https://github.com/pusaka-ut/pustasub.git`).
+- [x] Task 18.5: Comprehensive Enterprise Documentation (`README.md`).
+
 ---
 
 ## 3. Log Hasil Verifikasi Fungsional
@@ -187,3 +194,5 @@ Dokumen ini adalah pelacak status resmi perkembangan proyek PUSTASUB. File ini W
 | Backend & Vocabulary Modal Pipeline | PASSED | Penyelarasan REST & WebSocket endpoints, sentence translator enrichment, modal popup "Lihat Semua Istilah" berkonsep CandyClay, live search filter, CRUD SQLite lolos uji `tests/test_milestone15_backend_features.py` (9/9 tests passed) |
 | Zero-Failure Button Action Wiring | PASSED | Semua interaksi tombol (Mulai Subtitle, Hapus Layar, Tahan Teks, 7 Preset, 5 Posisi Subtitle, 3 Posisi Terjemahan, Saklar Terjemahan, Salin OBS & vMix, Tambah & Hapus Istilah, Slider Visual) terverifikasi 100% sukses tanpa kegagalan lolos uji `tests/test_milestone16_button_actions.py` (10/10 tests passed, total 70/70 test suite passed) |
 | Hybrid Neural Translation & vMix OBS | PASSED | Terjemahan cerdas Google Neural + leksikon offline fallback instan, penulisan atomik vMix `output/current_translation.txt` & dwibahasa `output/current_subtitle.txt`, serta penanganan event `switch_translation` di OBS overlay lolos uji `tests/test_milestone17_translation_pipeline.py` (6/6 tests passed, total 76/76 test suite passed) |
+| Standalone Zero-Dependency Runtime | PASSED | `pustasub-engine.exe` lolos uji verifikasi native execution, WebSocket live connecting, REST API status 200 OK tanpa ketergantungan Python sistem |
+| Multi-Device OTA Auto-Updater | PASSED | `update.bat` mendukung dual mode (Git sync & TLS 1.2 GitHub ZIP OTA download) terverifikasi bebas syntax error |
