@@ -48,14 +48,19 @@ Aplikasi telah dikemas dalam bentuk portabel pada berkas `PUSTASUB-v1.1.0-Portab
    - Centang opsi **Shutdown source when not visible** dan **Refresh browser when scene becomes active**.
 4. Subtitle dan terjemahan dwibahasa (*bilingual*) akan langsung muncul di kanvas siaran dengan styling animasi yang dipilih dari Admin Panel.
 
-### B. Integrasi vMix (Lower-Third Title & Ticker)
-1. Buka vMix, klik **Add Input** -> pilih **Title / XAML**.
-2. Pilih template lower-third atau ticker yang diinginkan.
-3. Klik kanan pada Title input di vMix -> pilih **Title Editor** -> klik tombol **Data Sources**.
-4. Hubungkan Data Source ke berkas teks output lokal PUSTASUB:
+### B. Integrasi vMix (Overlay & Ticker Siaran)
+**Metode 1: Web Browser Input (Sangat Direkomendasikan — Sama Mudahnya dengan OBS):**
+1. Buka vMix, klik **Add Input** -> pilih **Web Browser**.
+2. Masukkan URL: `http://127.0.0.1:8765/overlay`
+3. Atur Width `1920` dan Height `1080`.
+4. **Centang opsi "Transparent"** agar latar belakang transparan.
+5. Klik **OK**, lalu jadikan sebagai **Overlay 1 / 2**. Subtitle dan terjemahan langsung tayang dengan animasi halus dan badge resmi tanpa perlu menghubungkan file `.txt`.
+
+**Metode 2: Title Data Source (Opsional untuk GT Title Designer):**
+1. Buka Title Editor pada template vMix -> klik **Data Sources**.
+2. Hubungkan ke berkas teks lokal:
    - **Teks Bahasa Asli:** `C:\PUSTASUB\output\current_subtitle.txt`
    - **Teks Terjemahan Indonesia:** `C:\PUSTASUB\output\current_translation.txt`
-5. Atur pembaruan file menjadi otomatis (*auto-refresh on change*).
 
 ---
 

@@ -55,9 +55,21 @@ PUSTASUB.exe
 3. Atur resolusi: Width `1920`, Height `1080`.
 4. Subtitle otomatis tampil transparan di atas video siaran.
 
-### B. vMix (Title & Ticker)
-1. Di vMix, buat input Title dan buka **Title Editor** -> **Data Sources**.
-2. Hubungkan data source ke berkas teks lokal:
+### B. vMix (Sama Mudahnya dengan OBS)
+**Metode 1: Web Browser Input (Sangat Direkomendasikan — Hanya 3 Klik):**
+1. Di vMix, klik **Add Input** -> pilih **Web Browser**.
+2. Masukkan URL:
+   ```
+   http://127.0.0.1:8765/overlay
+   ```
+3. Atur Width `1920` dan Height `1080`.
+4. **Centang opsi "Transparent"** agar latar belakang transparan.
+5. Klik **OK**, lalu aktifkan sebagai **Overlay 1 / 2** di vMix. Subtitle, animasi rolling, dan terjemahan langsung tampil mulus tanpa perlu sentuh file `.txt`.
+
+**Metode 2: vMix GT Title Data Source (Opsional untuk Template Bawaan vMix):**
+Jika ingin teks subtitle dimasukkan ke dalam template grafik lower-third bawaan vMix GT Title Designer:
+1. Buka **Title Editor** di vMix -> klik **Data Sources**.
+2. Hubungkan ke berkas teks lokal:
    - Subtitle Utama: `C:\PUSTASUB\output\current_subtitle.txt`
    - Terjemahan Indonesia: `C:\PUSTASUB\output\current_translation.txt`
 
