@@ -26,8 +26,8 @@ Aplikasi telah dikemas dalam bentuk portabel pada berkas `PUSTASUB-v1.1.0-Portab
 
 ### 1. Menjalankan Aplikasi
 1. Ekstrak berkas `PUSTASUB-v1.1.0-Portable.zip` ke folder yang diinginkan di laptop siaran (misalnya `C:\PUSTASUB`).
-2. Klik 2x pada berkas **`run.bat`** (atau **`PUSTASUB.vbs`** untuk mode hening di latar belakang).
-3. Browser akan otomatis membuka panel kontrol operator pada alamat:
+2. Klik 2x pada berkas **`PUSTASUB.exe`**.
+3. Aplikasi akan otomatis membersihkan port, menyalakan sistem, dan membuka browser ke panel kontrol operator:
    ```
    http://127.0.0.1:8765/admin
    ```
