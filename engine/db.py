@@ -1,10 +1,16 @@
 import os
+import sys
 import sqlite3
 import json
 from contextlib import contextmanager
 from typing import List, Dict, Any, Optional
 
-DEFAULT_DB_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "data", "pustasub.db"))
+def get_base_dir() -> str:
+    if getattr(sys, "frozen", False):
+        return os.path.dirname(os.path.abspath(sys.executable))
+    return os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+
+DEFAULT_DB_PATH = os.path.join(get_base_dir(), "data", "pustasub.db")
 
 class DatabaseManager:
     def __init__(self, db_path: str = DEFAULT_DB_PATH):

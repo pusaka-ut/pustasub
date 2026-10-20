@@ -1,6 +1,7 @@
 import asyncio
 import math
 import os
+import sys
 import queue
 import time
 from dataclasses import asdict
@@ -645,8 +646,14 @@ async def websocket_endpoint(websocket: WebSocket):
     except Exception:
         active_websockets.discard(websocket)
 
-admin_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "web", "admin"))
-overlay_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "web", "overlay"))
+def get_base_dir() -> str:
+    if getattr(sys, "frozen", False):
+        return os.path.dirname(os.path.abspath(sys.executable))
+    return os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+
+base_app_dir = get_base_dir()
+admin_dir = os.path.join(base_app_dir, "web", "admin")
+overlay_dir = os.path.join(base_app_dir, "web", "overlay")
 os.makedirs(admin_dir, exist_ok=True)
 os.makedirs(overlay_dir, exist_ok=True)
 
